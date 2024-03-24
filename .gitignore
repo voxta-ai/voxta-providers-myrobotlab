@@ -1,0 +1,19 @@
+# DotNet
+bin/
+obj/
+publish/
+
+# Local
+PrivateLocalTests.cs
+appsettings.Development.json
+
+# Lib
+lib/*.dll
+lib/*.pdb
+
+# Rider / Visual Studio
+*.user
+
+# Tests
+tests/output/*
+

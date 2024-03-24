@@ -1,0 +1,15 @@
+<Project>
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Company>Voxta</Company>
+        <Product>Voxta Server</Product>
+        <Copyright>Copyright © Acidbubbles $([System.DateTime]::Now.Year)</Copyright>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" PrivateAssets="all" />
+    </ItemGroup>
+    <ItemGroup>
+        <Using Include="JetBrains.Annotations" />
+    </ItemGroup>
+</Project>

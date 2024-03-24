@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Voxta.Providers.MyRobotLab", "Voxta.Providers.MyRobotLab\Voxta.Providers.MyRobotLab.csproj", "{B4A29490-6874-49A2-BACF-AA74D1C5774B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{3ACA8E20-E76D-4C5F-8A73-01F08DE8F2BD}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4A29490-6874-49A2-BACF-AA74D1C5774B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4A29490-6874-49A2-BACF-AA74D1C5774B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4A29490-6874-49A2-BACF-AA74D1C5774B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4A29490-6874-49A2-BACF-AA74D1C5774B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

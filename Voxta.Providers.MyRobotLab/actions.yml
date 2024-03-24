@@ -1,0 +1,2 @@
+﻿- name: shrug
+  description: "When {{ user }} says something {{ char }} doesn't understand or care about."
