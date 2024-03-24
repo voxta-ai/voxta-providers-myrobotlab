@@ -6,7 +6,7 @@ namespace Voxta.Providers.MyRobotLab.Providers;
 
 public interface IVoxtaActionsYamlRepository
 {
-    Task<FunctionDefinition[]> DeserializeAsync();
+    Task<IntegratedAction[]> DeserializeAsync();
 }
 
 public class VoxtaActionsYamlRepository : IVoxtaActionsYamlRepository
@@ -15,9 +15,23 @@ public class VoxtaActionsYamlRepository : IVoxtaActionsYamlRepository
         .WithNamingConvention(CamelCaseNamingConvention.Instance)
         .Build();
     
-    public async Task<FunctionDefinition[]> DeserializeAsync()
+    public async Task<IntegratedAction[]> DeserializeAsync()
     {
         var yaml = await File.ReadAllTextAsync("actions.yml");
-        return _deserializer.Deserialize<FunctionDefinition[]>(yaml);
+        return _deserializer.Deserialize<IntegratedAction[]>(yaml);
     }
+}
+
+[Serializable]
+public class IntegratedAction
+{
+    public required FunctionDefinition Action { get; set; }
+    public MyRobotLabGesture[] Gestures { get; set; } = Array.Empty<MyRobotLabGesture>();
+}
+
+[Serializable]
+public class MyRobotLabGesture
+{
+    public required string Name { get; set; }
+    public required float Probability { get; set; }
 }

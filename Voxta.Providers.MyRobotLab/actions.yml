@@ -1,24 +1,60 @@
-﻿- name: shrug
-  description: "When {{ user }} says something {{ char }} doesn't understand or care about."
-- name: hearts
-  description: "When {{ char }} feels intense love or wants to show their love to {{ user }}."
-- name: unhappy
-  description: "When {{ char }} is displeased about what {{ user }} said."
-- name: smile
-  description: "When {{ char }} is happy."
-- name: laugh
-  description: "When {{ char }} is laughing."
-- name: cry
-  description: "When {{ char }} is crying or very sad."
-- name: fear
-  description: "When {{ char }} is afraid or telling a scary thing."
-- name: angry
-  description: "When {{ char }} is angry about what {{ user }} said."
-- name: horny
-  description: "When {{ char }} is angry about what {{ user }} said."
-- name: question  
-  description: "When {{ char }} is confused."
-- name: surprise
-  description: "When {{ char }} is surprised or startled."
-- name: neutral
-  description: "When {{ char }} does not have an emotion strong enough to justify an emote."
+﻿- action:
+    name: shrug
+    description: "When {{ user }} says something {{ char }} doesn't understand or care about."
+  gestures:
+    - name: shrug
+- action:
+    name: hearts
+    description: "When {{ char }} feels intense love or wants to show their love to {{ user }}."
+  gestures:
+    - name: hearts
+- action:
+    name: unhappy
+    description: "When {{ char }} is displeased about what {{ user }} said."
+  gestures:
+    - name: unhappy
+- action:
+    name: smile
+    description: "When {{ char }} is happy."
+  gestures:
+    - name: smile
+- action:
+    name: laugh
+    description: "When {{ char }} is laughing."
+  gestures:
+    - name: laugh
+- action:
+    name: cry
+    description: "When {{ char }} is crying or very sad."
+  gestures:
+    - name: cry
+- action:
+    name: fear
+    description: "When {{ char }} is afraid or telling a scary thing."
+  gestures:
+    - name: fear
+- action:
+    name: angry
+    description: "When {{ char }} is angry about what {{ user }} said."
+  gestures:
+    - name: angry
+- action:
+    name: horny
+    description: "When {{ char }} is angry about what {{ user }} said."
+  gestures:
+    - name: horny
+- action:
+    name: question  
+    description: "When {{ char }} is confused."
+  gestures:
+    - name: question
+- action:
+    name: surprise
+    description: "When {{ char }} is surprised or startled."
+  gestures:
+    - name: surprise
+- action:
+    name: neutral
+    description: "When {{ char }} does not have an emotion strong enough to justify an emote."
+  gestures:
+    - name: neutral

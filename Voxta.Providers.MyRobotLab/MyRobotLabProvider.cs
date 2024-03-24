@@ -33,7 +33,7 @@ public class MyRobotLabProvider(
         {
             SessionId = SessionId,
             ContextKey = ContextKey,
-            CharacterFunctions = actions
+            CharacterFunctions = actions.Select(a => a.Action).ToArray()
         });
         
         // Forward speech
@@ -54,8 +54,20 @@ public class MyRobotLabProvider(
             if (message.ContextKey != ContextKey) return;
             if (message.Role != ChatMessageRole.Assistant) return;
             
-            var url = string.Format(options.Value.GestureUrlTemplate, HttpUtility.UrlEncode(message.Value));
-            logger.LogInformation("Playing gesture {Gesture}: {Url}", message.Value, url);
+            var action = actions.FirstOrDefault(a => a.Action.Name == message.Value);
+            if (action == null)
+            {
+                logger.LogWarning("Action {Action} not found", message.Value);
+                return;
+            }
+            if(action.Gestures.Length == 0)
+            {
+                logger.LogWarning("Action {Action} has no gestures", message.Value);
+                return;
+            }
+            var gesture = action.Gestures[Random.Shared.Next(action.Gestures.Length)];
+            var url = string.Format(options.Value.GestureUrlTemplate, HttpUtility.UrlEncode(gesture.Name));
+            logger.LogInformation("Playing gesture {Gesture} from action {Action}: {Url}", gesture.Name, message.Value, url);
             _ = _httpClient.GetAsync(url).ContinueWith(HandleHttpErrors);
         });
     }
