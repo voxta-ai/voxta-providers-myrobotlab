@@ -26,6 +26,7 @@ services.AddLogging(builder =>
 // Dependencies
 services.AddHttpClient();
 services.AddSingleton<IVoxtaActionsYamlRepository, VoxtaActionsYamlRepository>();
+services.AddSingleton<ITextToSpeechPreprocessor, TextToSpeechPreprocessor>();
 
 // Voxta Providers
 services.AddVoxtaProvider(builder =>

@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using System.Web;
+﻿using System.Web;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Voxta.Model.Shared;
@@ -10,18 +9,16 @@ using Voxta.Providers.Host;
 namespace Voxta.Providers.MyRobotLab.Providers;
 
 [UsedImplicitly]
-public partial class MyRobotLabProvider(
+public class MyRobotLabProvider(
     IRemoteChatSession session,
     IHttpClientFactory httpClientFactory,
     IVoxtaActionsYamlRepository repository,
+    ITextToSpeechPreprocessor textToSpeechPreprocessor,
     IOptions<MyRobotLabOptions> options,
     ILogger<MyRobotLabProvider> logger
 ) : ProviderBase(session, logger)
 {
     private const string ContextKey = "MyRobotLab";
-    
-    [GeneratedRegex(@"^[a-zA-Z.,;!?0-9 ]", RegexOptions.Compiled)]
-    private static partial Regex CleanTextForSpeechRegex();
     
     private readonly HttpClient _httpClient = httpClientFactory.CreateClient();
     
@@ -44,7 +41,7 @@ public partial class MyRobotLabProvider(
         {
             if(!options.Value.EnableSpeech) return;
 
-            var cleanText = CleanTextForSpeechRegex().Replace(message.Text, "");
+            var cleanText = textToSpeechPreprocessor.Preprocess(message.Text);
             var url = string.Format(options.Value.SpeechUrlTemplate, HttpUtility.UrlEncode(cleanText));
             logger.LogInformation("Sending speech \"{Value}\": {Url}", cleanText, url);
             _ = _httpClient.GetAsync(url).ContinueWith(HandleHttpErrors);
