@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+using Serilog;
 using Voxta.Providers.Host;
 using Voxta.Providers.MyRobotLab;
 using Voxta.Providers.MyRobotLab.Providers;
@@ -18,9 +18,14 @@ services.AddOptions<MyRobotLabOptions>()
     .ValidateDataAnnotations();
 
 // Logging
+await using var log = new LoggerConfiguration()
+    .ReadFrom.Configuration(configuration)
+    .Filter.ByExcluding(logEvent => logEvent.Exception?.GetType().IsSubclassOf(typeof(OperationCanceledException)) ?? false)
+    .CreateLogger();
 services.AddLogging(builder =>
 {
-    builder.AddConsole();
+    // ReSharper disable once AccessToDisposedClosure
+    builder.AddSerilog(log);
 });
 
 // Dependencies
