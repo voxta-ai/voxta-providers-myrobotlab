@@ -1,2 +1,24 @@
 ﻿- name: shrug
   description: "When {{ user }} says something {{ char }} doesn't understand or care about."
+- name: hearts
+  description: "When {{ char }} feels intense love or wants to show their love to {{ user }}."
+- name: unhappy
+  description: "When {{ char }} is displeased about what {{ user }} said."
+- name: smile
+  description: "When {{ char }} is happy."
+- name: laugh
+  description: "When {{ char }} is laughing."
+- name: cry
+  description: "When {{ char }} is crying or very sad."
+- name: fear
+  description: "When {{ char }} is afraid or telling a scary thing."
+- name: angry
+  description: "When {{ char }} is angry about what {{ user }} said."
+- name: horny
+  description: "When {{ char }} is angry about what {{ user }} said."
+- name: question  
+  description: "When {{ char }} is confused."
+- name: surprise
+  description: "When {{ char }} is surprised or startled."
+- name: neutral
+  description: "When {{ char }} does not have an emotion strong enough to justify an emote."
